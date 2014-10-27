@@ -18,6 +18,18 @@ io.on('connection', function(socket){
 		console.log('message: ' + msg);
 	});
 });
+
+io.emit('some event', { for: 'everyone' });
+
+io.on('connection', function(socket){
+	socket.broadcast.emit('hi');
+});
+
+io.on('connection', function(socket){
+	socket.on('chat message', function(msg){
+		io.emit('chat message', msg);
+	});
+});
 // Initialised instance of socket by passing http object. 
 // Then listen on the connection event for incoming sockets,
 // and log it to the console.
