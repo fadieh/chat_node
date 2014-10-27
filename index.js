@@ -11,6 +11,9 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 	console.log('a user connected');
+	socket.on('disconnect', function(){
+		console.log('user disconnected');
+	});
 });
 // Initialised instance of socket by passing http object. 
 // Then listen on the connection event for incoming sockets,
