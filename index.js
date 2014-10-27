@@ -1,5 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
+var io = require('socket.io')(http);
 // Express initialises app to be a function handler so
 // can supply to a HTTP server.
 
