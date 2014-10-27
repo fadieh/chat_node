@@ -8,6 +8,13 @@ app.get('/', function(req, res){
 });
 // Define a route handle / that gets called when we hit home.
 
+io.on('connection', function(socket){
+	console.log('a user connected');
+});
+// Initialised instance of socket by passing http object. 
+// Then listen on the connection event for incoming sockets,
+// and log it to the console.
+
 http.listen(3000, function(){
 	console.log('listening on *:3000');
 });
