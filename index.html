@@ -39,6 +39,13 @@
 	socket.on('disconnect', function(){
 		$('#messages').append($('<li>').text('Chat server disconnected - You are unable to chat for now.'))
 	});
+
+	socket.on('userConnection', function(data){
+		$('#messages').append($('<li>').text(data));
+	});
+
+
+
 	</script>
 
 </body>
