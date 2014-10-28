@@ -15,6 +15,7 @@ io.on('connection', function(socket){
 
 	socket.on('disconnect', function(){
 	console.log('user disconnected');
+	socket.broadcast.emit('userDisconnection', 'A user disconnected')
 	});
 
 
@@ -29,7 +30,6 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
 		io.emit('server disconnect')
 	});
-
 
 
 });
