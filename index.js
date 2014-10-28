@@ -11,30 +11,25 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 	console.log('a user connected');
+
 	socket.on('disconnect', function(){
-		console.log('user disconnected');
+	console.log('user disconnected');
 	});
+
+	io.on('disconnect', function(){
+	io.emit('disconnect', 'user disconnected');
+	});
+
 	socket.on('chat message', function(msg){
-		console.log('message: ' + msg);
+	console.log('message: ' + msg);
 	});
-});
 
-io.emit('some event', { for: 'everyone' });
-
-io.on('connection', function(socket){
-	socket.broadcast.emit('hi');
-});
-
-io.on('connection', function(socket){
 	socket.on('chat message', function(msg){
-		io.emit('chat message', msg);
+	io.emit('chat message', msg);
 	});
+
 });
-// Initialised instance of socket by passing http object. 
-// Then listen on the connection event for incoming sockets,
-// and log it to the console.
 
 http.listen(3000, function(){
 	console.log('listening on *:3000');
 });
-// We make the app listen on port 3000
